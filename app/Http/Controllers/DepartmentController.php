@@ -18,20 +18,20 @@ class DepartmentController extends Controller
         return view('departments.create');
     }
 
-  public function store(StoreDepartmentRequest $request)
+ public function store(StoreDepartmentRequest $request)
 {
-    $validated = $request->validated();
-
-    Department::create([
-        'name' => $validated['name'],
-        'code' => strtoupper($validated['code']),
-        'description' => $validated['description'],
+    $department = Department::create([
+        'name' => $request->name,
+        'code' => strtoupper($request->code),
+        'description' => $request->description,
         'status' => true,
     ]);
 
-    return redirect()
-        ->route('departments.index')
-        ->with('success', 'Department created successfully.');
+    return response()->json([
+        'status' => true,
+        'message' => 'Department created successfully.',
+        'department' => $department,
+    ]);
 }
 
     public function show(Department $department)
@@ -39,10 +39,10 @@ class DepartmentController extends Controller
         //
     }
 
-    public function edit(Department $department)
-    {
-        //
-    }
+   public function edit(Department $department)
+{
+    return response()->json($department);
+}
 
     public function update(Request $request, Department $department)
     {

@@ -7,9 +7,11 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>Departments</h2>
 
-    <a href="{{ route('departments.create') }}" class="btn btn-primary">
-        + Add Department
-    </a>
+    <button class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#addDepartmentModal">
+    + Add Department
+</button>
 </div>
 @if(session('success'))
     <div class="alert alert-success">
@@ -28,13 +30,13 @@
         </tr>
     </thead>
 
-    <tbody>
+ <tbody id="departmentsTableBody">
 
 @if($departments->count())
 
     @foreach($departments as $department)
 
-        <tr>
+        <tr id="department-{{ $department->id }}">
 
             <td>{{ $loop->iteration }}</td>
 
@@ -64,14 +66,10 @@
 
 @else
 
-    <tr>
-
+    <tr id="emptyRow">
         <td colspan="5" class="text-center">
-
             No Departments Found
-
         </td>
-
     </tr>
 
 @endif
@@ -79,5 +77,7 @@
 </tbody>
 
 </table>
+<!-- Add Department Modal -->
 
+@include('departments.partials.modal')
 @endsection
