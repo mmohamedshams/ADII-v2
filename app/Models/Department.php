@@ -27,5 +27,6 @@ class Department extends Model
             $department->uuid = Str::uuid();
 
         });
+        
     }
 }

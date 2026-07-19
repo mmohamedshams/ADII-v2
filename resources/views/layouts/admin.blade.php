@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -20,18 +19,21 @@
 
     @include('layouts.navbar')
 
-    @include('layouts.sidebar')
+    <div style="display:flex; min-height:100vh;">
 
-    <main class="container mt-4">
+        @include('layouts.sidebar')
 
-        @yield('content')
+        <div style="flex:1; padding:30px;">
 
-    </main>
+            @yield('content')
+
+        </div>
+
+    </div>
 
     @include('layouts.footer')
 
     @include('layouts.scripts')
 
 </body>
-
 </html>
