@@ -34,23 +34,46 @@ class DepartmentController extends Controller
     ]);
 }
 
-    public function show(Department $department)
-    {
-        //
-    }
+   public function show(Department $department)
+{
+    return response()->json([
+        'status' => true,
+        'department' => $department,
+    ]);
+}
 
    public function edit(Department $department)
 {
     return response()->json($department);
 }
 
-    public function update(Request $request, Department $department)
-    {
-        //
-    }
+    public function update(StoreDepartmentRequest $request, Department $department)
+{
+    $validated = $request->validated();
 
-    public function destroy(Department $department)
-    {
-        //
-    }
+    $department->update([
+        'name'        => $validated['name'],
+        'code'        => strtoupper($validated['code']),
+        'description' => $validated['description'],
+    ]);
+
+    return response()->json([
+        'status' => true,
+        'message' => 'Department updated successfully.',
+        'department' => $department,
+    ]);
+}
+
+   public function destroy(Department $department)
+{
+    $id = $department->id;
+
+    $department->delete();
+
+    return response()->json([
+        'status' => true,
+        'message' => 'Department deleted successfully.',
+        'id' => $id,
+    ]);
+}
 }

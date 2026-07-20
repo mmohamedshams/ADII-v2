@@ -50,13 +50,18 @@
 
             <td>
 
-                <a href="#" class="btn btn-warning btn-sm">
-                    Edit
-                </a>
+                <button
+    class="btn btn-warning btn-sm editDepartmentBtn"
+    data-id="{{ $department->id }}">
+    Edit
+</button>
 
-                <a href="#" class="btn btn-danger btn-sm">
-                    Delete
-                </a>
+              <button
+    type="button"
+    class="btn btn-danger btn-sm deleteDepartmentBtn"
+    data-id="{{ $department->id }}">
+    Delete
+</button>
 
             </td>
 

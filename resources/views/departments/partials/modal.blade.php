@@ -5,9 +5,11 @@
             <form id="departmentForm">
 
                 @csrf
-
+                <input type="hidden" id="department_id" name="department_id">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Department</h5>
+                    <h5 class="modal-title" id="departmentModalTitle">
+    Add Department
+</h5>
 
                     <button type="button"
                             class="btn-close"
@@ -21,6 +23,7 @@
                         <label>Name</label>
 
                         <input type="text"
+                        id="name"
                                name="name"
                                class="form-control">
                     </div>
@@ -29,6 +32,7 @@
                         <label>Code</label>
 
                         <input type="text"
+                        id="code"
                                name="code"
                                class="form-control">
                     </div>
@@ -37,6 +41,7 @@
                         <label>Description</label>
 
                         <textarea name="description"
+                        id="description"
                                   class="form-control"></textarea>
                     </div>
 
